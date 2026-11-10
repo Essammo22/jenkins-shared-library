@@ -12,11 +12,11 @@ def call(String imageName, String credentialsId = 'dockerhub-creds') {
     stage('Trivy Security Scan') {
         echo "Scanning image for HIGH and CRITICAL vulnerabilities..."
         sh """
-            trivy image \
-            --severity HIGH,CRITICAL \
-            --ignore-unfixed \
-            --scanners vuln \
-            --exit-code 0 \
+            trivy image \\
+            --timeout 15m \\
+            --severity HIGH,CRITICAL \\
+            --scanners vuln \\
+            --exit-code 0 \\
             ${fullImage}
         """
     }
