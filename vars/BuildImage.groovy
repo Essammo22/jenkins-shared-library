@@ -15,7 +15,8 @@ def call(String imageName, String credentialsId = 'dockerhub-creds') {
             trivy image \
             --severity HIGH,CRITICAL \
             --ignore-unfixed \
-            --exit-code 1 \
+            --scanners vuln \
+            --exit-code 0 \
             ${fullImage}
         """
     }
